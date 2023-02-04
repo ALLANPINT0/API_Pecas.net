@@ -6,5 +6,9 @@ namespace API_PECAS.Adapters.MongoDB.Services
     {
         Task CreateAsync(Pecas pecas);
         Task<Pecas> GetById(string id);
+        Task RemoveAsync(string id);
+        Task UpdateAsync(string id, Pecas pecas);
+
+
     }
 }

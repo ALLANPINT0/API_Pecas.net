@@ -29,5 +29,23 @@ namespace API_PECAS.Application
             var obj = await _repositore.GetById(id);
             return obj;
         }
+
+        public async Task RemovePecas(string id)
+        {
+            await _repositore.RemoveAsync(id);
+        }
+
+        public async Task UpdatePecas(string id, PecasRequest request)
+        {
+            var result = new Pecas
+            {
+                _id = id,
+                Name = request.Name,
+                Marca = request.Marca,
+                Price = request.Price,
+                Ref = request.Ref
+            };
+            await _repositore.UpdateAsync(id, result);
+        }
     }
 }

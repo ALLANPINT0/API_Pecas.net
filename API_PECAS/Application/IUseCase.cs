@@ -5,8 +5,10 @@ namespace API_PECAS.Application
 {
     public interface IUseCase 
     {
-        Task<Pecas> CreatePecas(PecasRequest request);
+        Task<Pecas> CreatePecas(PecasRequest  request);
         Task<Pecas> ReadPecas(string id);
+        Task RemovePecas(string id);
+        Task UpdatePecas(string id,PecasRequest request);
 
     }
 }

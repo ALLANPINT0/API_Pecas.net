@@ -11,7 +11,7 @@ namespace API_PECAS.Adapters.MongoDB.DTO
         [BsonElement("Name")]
         public string Name { get; set; }
         [BsonElement("Ref")]
-        public double Ref { get; set; }
+        public string Ref { get; set; }
         [BsonElement("Price")]
         public float Price { get; set; }
         [BsonElement("Marca")]

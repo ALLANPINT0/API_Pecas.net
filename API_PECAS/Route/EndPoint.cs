@@ -9,6 +9,8 @@ namespace API_PECAS.Route
         {
             app.MapPost("/CadastrarPecas", CadastrarAsync);
             app.MapGet("/BuscarPecasPorId", BuscarPorIdAsync);
+            app.MapPut("/AlterarPecas", AlterarPecas);
+            app.MapDelete("/DeletarPecas", DeletarPecas);
 
 
         }
@@ -48,6 +50,42 @@ namespace API_PECAS.Route
                     descricao = ex.Message
                 }, statusCode: 500);
 
+            }
+        }
+        private static async Task<IResult> AlterarPecas(IUseCase useCase,PecasRequest request, string id)
+        {
+            try
+            {
+                await useCase.UpdatePecas(id, request);
+                return Results.Ok();
+            }
+            catch (Exception ex)
+            {
+                return Results.Json(new
+                {
+                    codigo = "500",
+                    mensagem = "Problema ao buscar uma peca por id",
+                    descricao = ex.Message
+                }, statusCode: 500);
+                
+            }
+        }
+        private static async Task<IResult> DeletarPecas(IUseCase useCase, string id)
+        {
+            try
+            {
+                await useCase.RemovePecas(id);
+                return Results.Ok();
+            }
+            catch (Exception ex)
+            {
+                return Results.Json(new
+                {
+                    codigo = "500",
+                    mensagem = "Problema ao buscar uma peca por id",
+                    descricao = ex.Message
+                }, statusCode: 500);
+                
             }
         }
     }

@@ -20,5 +20,13 @@ namespace API_PECAS.Adapters.MongoDB.Services
 
         public async Task<Pecas> GetById(string id) =>
             await _mongocollection.Find(x => x._id == id).FirstOrDefaultAsync();
+
+        public async Task RemoveAsync(string id) => 
+            await _mongocollection.DeleteOneAsync(x => x._id == id);
+
+        public async Task UpdateAsync(string id, Pecas pecas) =>
+        
+            await _mongocollection.ReplaceOneAsync(x => x._id == id,pecas);
+        
     }
 }
